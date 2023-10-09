@@ -5,11 +5,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import TaskForm, CreateUserForm
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from django.core.mail import send_mail
-from django.core.mail import send_mail
-from django.conf import settings
 
 
 # Create your views here.
@@ -98,29 +93,4 @@ def user_register(request):
                 return redirect('members:login')
         context = {'form':form}
         return render(request, 'user_register.html', context=context)
-    
-
-@login_required(login_url='members:login')
-def contactus(request):
-    if request.method == "POST":
-        print("hii")
-        message_name = request.POST['message-name']
-        message_email = request.POST['message-email']
-        message_mobile = request.POST['message-mobile']
-
-        try:
-            send_mail('Contact Form',
-            message_name + message_email + message_mobile,
-            
-            settings.EMAIL_HOST_USER,
-            ['sarathupsrl@gmail.com'], 
-            fail_silently=False)
-
-
-            return redirect('members:dashboard')
-        except:
-            return redirect('members:contactus')
-    else:
-    
-        return render(request, 'contact_us.html')
     

@@ -1,6 +1,6 @@
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700;1,800;1,900&display=swap');
-
     :root {
   --input-border: #8b8a8b;
   --input-focus-h: 245;
@@ -17,36 +17,60 @@
   border: 2px solid var(--input-border);
   border-radius: 44px;
 }
-
+body{
+        background-color: #212038 !important;
+        display: flex;
+        position: relative;
+        font-family: Poppins,sans-serif;
+        align-items: center;
+        justify-content: center;
+      }
+      .update-form{
+        background-color: #fff;
+        padding: 30px 20px;
+        width: 20%;
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: center;
+        flex-direction: column;
+      }
+      h3{
+        color: #212038;
+        font-size: 1.6rem;
+      }
+      .input-group{
+        margin: 10px 0;
+        width: 100%;
+      }
+      body input{
+        width: 100%;
+      }
+      .textbox{
+        position: absolute;
+        right: 25px;
+        display: inline-flex;
+        bottom: 28px;
+        width: 20px;
+      }
 </style>
 
 
-<h3>Update contact</h3>
 
-<form method="POST" action="">
+<form method="POST" action="" class="update-form">
+    <h3>Update contact</h3>
     {% csrf_token %}
     <div class="input-group mb-3">
-        <div class="input-group-append">
-            <span class="input-group-text"><i class="fas fa-user"></i></span>
-        </div>
+
         {{update_form.name}}
     </div>
     <div class="input-group mb-2">
-        <div class="input-group-append">
-            <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
-        </div>
         {{update_form.address}}
     </div>
     <div class="input-group mb-2">
-        <div class="input-group-append">
-            <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
-        </div>
         {{update_form.amount}}
     </div>
-    <div class="input-group mb-2">
-        <div class="input-group-append">
-            <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
-        </div>
+    <div class="input-group mb-2 textbox">
         {{update_form.complete}}
     </div>
 
